@@ -1,10 +1,13 @@
-import './globals.css';
+import "./globals.css";
 
-import Footer from '@/components/footers/footer';
-import Header from '@/components/headers/header';
-import { Inter } from 'next/font/google';
+import Footer from "@/components/footers/footer";
+import Header from "@/components/headers/header";
+import { Poppins } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppin = Poppins({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: "Robot Vacuum Stimulation",
@@ -18,10 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={poppin.className}>
         <Header />
-        {children}
-        <Footer />
+        <div className="container px-8">{children}</div>
+        {/* <Footer /> */}
       </body>
     </html>
   );
