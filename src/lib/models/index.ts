@@ -1,9 +1,11 @@
 import {LocationModel} from "./location.model";
-import {RobotModel} from "./robot.model";
-import {DirectionEnum} from "./enum.model";
+import {RobotViewModel} from "./view-models/robot.view.model";
+import {DirectionEnum, SpiralDirectionEnum} from "./enum.model";
 
 export {
     LocationModel,
+    RobotViewModel as RobotModel,
+    ////////////////////////
     DirectionEnum,
-    RobotModel
+    SpiralDirectionEnum,
 }

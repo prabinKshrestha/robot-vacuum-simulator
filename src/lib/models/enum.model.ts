@@ -1,6 +1,11 @@
 export enum DirectionEnum{
-    U,
-    L,
-    D,
-    R,
+    Up,
+    Left,
+    Down,
+    Right,
+}
+
+export enum SpiralDirectionEnum{
+    Clockwise,
+    AnitClockwise,
 }
