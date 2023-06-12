@@ -5,15 +5,15 @@ export default function TestLayout({
 }) {
   return (
     <>
-      <div className="mx-auto my-5 max-w-xl rounded overflow-hidden shadow-md bg-blue-100">
+      <div className="mx-auto my-5 max-w-xl rounded overflow-hidden shadow-md bg-teal-200">
         <h3 className="m-auto pt-4 pb-2 text-center">
-          Components (For Testing Purpose Only)
+        Intermediate Development Component
         </h3>
         <p className="pt-0 pb-4 px-4 text-xs">
-          These components for implementation purpose with bad/non-refactored code. It helps me to keep the code as a history.
+        This component is not a final version but rather a part of the ongoing development process. Its purpose is to preserve the code's progress and allow for easy viewing through routes.
         </p>
       </div>
-      <div className="my-16">{children}</div>
+      <div className="my-16 mx-auto">{children}</div>
     </>
   );
 }
