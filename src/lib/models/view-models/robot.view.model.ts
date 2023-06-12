@@ -3,6 +3,7 @@ import { LocationModel } from "../location.model";
 import { SpiralMover } from "./spiral-mover";
 
 export class RobotViewModel extends SpiralMover {
+    public id: number;
     private _initialLocation: LocationModel;
     private _currentLocation: LocationModel;
 
@@ -10,6 +11,7 @@ export class RobotViewModel extends SpiralMover {
       super(intialDirection);
       this._initialLocation = initialLocation;
       this._currentLocation = new LocationModel(initialLocation.getX(), initialLocation.getY());
+      this.id = Math.floor(Math.random() * Math.floor(Math.random() * Date.now())); // Should change this code
     }
 
     public get initialLocation(): LocationModel{
