@@ -6,6 +6,7 @@ export class RobotViewModel extends SpiralMover {
     public id: number;
     private _initialLocation: LocationModel;
     private _currentLocation: LocationModel;
+    private _intialDirection: DirectionEnum;
 
     constructor(initialLocation: LocationModel, intialDirection: DirectionEnum) {
       super(intialDirection);
@@ -28,6 +29,14 @@ export class RobotViewModel extends SpiralMover {
 
     public set currentLocation(location: LocationModel){
       this._currentLocation = location;
+    }
+
+    public get intialDirection(): DirectionEnum{
+      return this._intialDirection;
+    }
+
+    public set intialDirection(direction: DirectionEnum){
+      this._intialDirection = direction;
     }
 
     public moveRobot(){
