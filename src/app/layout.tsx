@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppin.className}>
         <Header />
-        <div className="container px-8">{children}</div>
+        {children}
         {/* <Footer /> */}
       </body>
     </html>
