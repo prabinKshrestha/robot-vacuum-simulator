@@ -1,3 +1,4 @@
+import Footer from "@/components/footers/footer";
 import "./globals.css";
 
 import Header from "@/components/headers/header";
@@ -23,7 +24,7 @@ export default function RootLayout({
       <body className={poppin.className}>
         <Header />
         {children}
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
