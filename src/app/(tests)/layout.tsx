@@ -6,10 +6,10 @@ export default function TestLayout({
   return (
     <div className="container px-8">
       <div className="mx-auto my-5 max-w-xl rounded overflow-hidden shadow-md bg-teal-200">
-        <h3 className="m-auto pt-4 pb-2 text-center">
+        <h3 className="m-auto pt-4 pb-2 text-center text-xl">
           Intermediate Development Component
         </h3>
-        <p className="pt-0 pb-4 px-4 text-xs">
+        <p className="pt-0 pb-4 px-4 text-sm">
           This component is not a final version but rather a part of the ongoing
           development process. Its purpose is to preserve the code's progress
           and allow for easy viewing through routes.
