@@ -1,7 +1,28 @@
+"use client";
+
 import RobotConfigurationForm from "@/components/forms/form";
 import Grid from "@/components/grids/grid";
+import { RobotModel } from "@/lib/models";
+import { useState } from "react";
 
 export default function Home() {
+  const [gridLength, setGridLength] = useState(0);
+  const [time, setTime] = useState(0);
+  const [clockwise, setClockwise] = useState(false);
+  const [robots, setRobots] = useState([]);
+
+  function onFormSubmission(
+    gridLength: number,
+    time: number,
+    clockwise: boolean,
+    formRobots: RobotModel[]
+  ) {
+    setGridLength(gridLength);
+    setTime(time);
+    setClockwise(clockwise);
+    setRobots(formRobots);
+  }
+
   return (
     <>
       <div className="h-screen absolute left-0 right-0  top-0">
@@ -23,8 +44,8 @@ export default function Home() {
         </div>
       </div>
       <div className="h-screen w-full"></div>
-      <RobotConfigurationForm />
-      <Grid />
+      <RobotConfigurationForm onSubmission={onFormSubmission} />
+      {gridLength ? <Grid gridLength={gridLength} time={time} clockwise={clockwise} formRobots={robots}  /> : ""}
     </>
   );
 }
