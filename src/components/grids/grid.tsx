@@ -1,21 +1,19 @@
 "use client";
 
-import Image from "next/image";
 import React, { useState } from "react";
 import { DirectionEnum, LocationModel, RobotModel } from "@/lib/models";
+import cloneDeep from "lodash/cloneDeep";
+import Cell from "./cell";
 
-const N_GRID_SIZE: number = 21;
-
-let grid: number[][] = Array(N_GRID_SIZE).fill(Array(N_GRID_SIZE).fill(1));
 let stopMovingRobots: boolean = false;
 
 export default function Grid({ gridLength, time, clockwise, formRobots }) {
-  const [robots, setRobots] = useState([...formRobots]);
+  const [robots, setRobots] = useState(cloneDeep(formRobots));
   const [visitedLocations, setvisitedLocations] = useState([]);
-
+  const classGrid = `grid-cols-${gridLength}`;
   function _changeLocation() {
     visitedLocations.push(...robots.map((x) => x.currentLocation));
-    setvisitedLocations([...visitedLocations]);
+    setvisitedLocations(cloneDeep(visitedLocations));
     robots.forEach((robot) => robot.moveRobot());
     setRobots(robots);
     if (
@@ -37,7 +35,7 @@ export default function Grid({ gridLength, time, clockwise, formRobots }) {
     if (!stopMovingRobots) {
       _changeLocation();
     }
-  }, time*1000);
+  }, time * 1000);
 
   function _isVisited(dx, dy) {
     return (
@@ -56,40 +54,21 @@ export default function Grid({ gridLength, time, clockwise, formRobots }) {
   }
 
   return (
-    <div className="w-full h-screen  py-20 px-10">
-      <div className="mx-auto inline-grid border border-black grid-cols-21 grid-flow-row gap-0">
-        {grid.map((r, iy) =>
-          r.map((c, ix) => (
-            <Cell
-              key={`${iy}_${ix}`}
-              value={_isVisited(ix, iy) ? 1 : 0}
-              isRobot={_isRobot(ix, iy)}
-            />
-          ))
-        )}
-      </div>
-    </div>
-  );
-}
-
-function Cell({ value, isRobot }) {
-  return (
-    <div
-      className={
-        `h-5 w-5 border border-black text-center ` +
-        (isRobot ? "bg-blue-300" : value == 1 ? "" : "bg-amber-300")
-      }
-    >
-      {isRobot ? <Robot /> : ""}
-    </div>
-  );
-}
-
-function Robot() {
-  return (
-    <div className="h-full  align-middle flex items-center justify-items-center">
-      <div className="relative m-auto w-3/4 h-3/4">
-        <Image src="/robot.png" alt="Robot" fill />
+    <div className="w-full h-screen py-20 px-10 flex justify-items-center items-center">
+      <div
+        className={`mx-auto inline-grid border border-black grid-flow-row gap-0 ${classGrid}`}
+      >
+        {Array(gridLength)
+          .fill(Array(gridLength).fill(1))
+          .map((r, iy) =>
+            r.map((c, ix) => (
+              <Cell
+                key={`${iy}_${ix}`}
+                isCleaned={_isVisited(ix, iy)}
+                isRobot={_isRobot(ix, iy)}
+              />
+            ))
+          )}
       </div>
     </div>
   );

@@ -12,6 +12,10 @@ export abstract class SpiralMover{
     constructor(intialDirection: DirectionEnum) {
       this._nextDirection = intialDirection
     }
+
+    protected changeNextDirection(intialDirection: DirectionEnum): void{
+      this._nextDirection = intialDirection
+    }
   
     public nextLocation(location: LocationModel): LocationModel{
       return this._isBoundryExceeded ? this._nextLocationForBoundryMovement(location): this._nextLocationForSpiralMovement(location);

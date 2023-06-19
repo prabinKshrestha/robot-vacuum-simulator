@@ -36,6 +36,7 @@ export class RobotViewModel extends SpiralMover {
     }
 
     public set intialDirection(direction: DirectionEnum){
+      this.changeNextDirection(direction);
       this._intialDirection = direction;
     }
 
