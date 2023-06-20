@@ -3,13 +3,15 @@
 import RobotConfigurationForm from "@/components/forms/form";
 import Grid from "@/components/grids/grid";
 import { RobotModel } from "@/lib/models";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function Home() {
+  const [render, setRender] = useState(0);
   const [gridLength, setGridLength] = useState(0);
   const [time, setTime] = useState(0);
   const [clockwise, setClockwise] = useState(false);
   const [robots, setRobots] = useState([]);
+  const compRef = useRef(null);
 
   function onFormSubmission(
     gridLength: number,
@@ -21,6 +23,10 @@ export default function Home() {
     setTime(time);
     setClockwise(clockwise);
     setRobots(formRobots);
+    setRender(render+1);
+    setTimeout(() =>
+      compRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+    );
   }
 
   return (
@@ -45,7 +51,18 @@ export default function Home() {
       </div>
       <div className="h-screen w-full"></div>
       <RobotConfigurationForm onSubmission={onFormSubmission} />
-      {gridLength ? <Grid gridLength={gridLength} time={time} clockwise={clockwise} formRobots={robots}  /> : ""}
+      {gridLength ? (
+        <div ref={compRef} key={render}>
+          <Grid
+            gridLength={gridLength}
+            time={time}
+            clockwise={clockwise}
+            formRobots={robots}
+          />
+        </div>
+      ) : (
+        ""
+      )}
     </>
   );
 }
