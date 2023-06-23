@@ -1,46 +1,58 @@
 import { DirectionEnum, SpiralDirectionEnum } from "../enum.model";
 import { LocationModel } from "../location.model";
 import { SpiralMover } from "./spiral-mover";
+import { v4 as uuidv4 } from "uuid";
 
 export class RobotViewModel extends SpiralMover {
-    public id: number;
-    private _initialLocation: LocationModel;
-    private _currentLocation: LocationModel;
-    private _intialDirection: DirectionEnum;
+  private _id: number;
 
-    constructor(initialLocation: LocationModel, intialDirection: DirectionEnum) {
-      super(intialDirection);
-      this._initialLocation = initialLocation;
-      this._currentLocation = new LocationModel(initialLocation.getX(), initialLocation.getY());
-      this.id = Math.floor(Math.random() * Math.floor(Math.random() * Date.now())); // Should change this code
-    }
+  private _initialLocation: LocationModel;
+  private _currentLocation: LocationModel;
+  private _intialDirection: DirectionEnum;
 
-    public get initialLocation(): LocationModel{
-      return this._initialLocation;
-    }
+  constructor(initialLocation: LocationModel, intialDirection: DirectionEnum) {
+    super(intialDirection);
+    this._intialDirection = intialDirection;
+    this._initialLocation = initialLocation;
+    this._currentLocation = new LocationModel(
+      initialLocation.getX(),
+      initialLocation.getY()
+    );
+    this._id = uuidv4();
+  }
 
-    public set initialLocation(initialLocation: LocationModel){
-      this._initialLocation = initialLocation;
-    }
+  public get id(): number {
+    return this._id;
+  }
 
-    public get currentLocation(): LocationModel{
-      return this._currentLocation;
-    }
+  // Location
+  public get initialLocation(): LocationModel {
+    return this._initialLocation;
+  }
 
-    public set currentLocation(location: LocationModel){
-      this._currentLocation = location;
-    }
+  public set initialLocation(initialLocation: LocationModel) {
+    this._initialLocation = initialLocation;
+  }
 
-    public get intialDirection(): DirectionEnum{
-      return this._intialDirection;
-    }
+  public get currentLocation(): LocationModel {
+    return this._currentLocation;
+  }
 
-    public set intialDirection(direction: DirectionEnum){
-      this.changeNextDirection(direction);
-      this._intialDirection = direction;
-    }
+  public set currentLocation(location: LocationModel) {
+    this._currentLocation = location;
+  }
 
-    public moveRobot(){
-      this._currentLocation = this.nextLocation(this._currentLocation);
-    }
+  // Direction
+  public get intialDirection(): DirectionEnum {
+    return this._intialDirection;
+  }
+
+  public set intialDirection(direction: DirectionEnum) {
+    this.changeNextDirection(direction);
+    this._intialDirection = direction;
+  }
+
+  public moveRobot() {
+    this._currentLocation = this.nextLocation(this._currentLocation);
+  }
 }

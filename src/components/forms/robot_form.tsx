@@ -15,7 +15,7 @@ export default function RobotFormFields({
         robot.currentLocation.setY(value);
         break;
       case "Direction":
-        robot.intialDirection = value;
+        robot.intialDirection = value as DirectionEnum;
         break;
     }
     onChangeRobots(robot);
@@ -61,7 +61,7 @@ export default function RobotFormFields({
           <select
             className="bg-gray-200 text-center appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
             value={robot.intialDirection}
-            onChange={(e) => triggerChange("Direction", e.target.value)}
+            onChange={(e) => triggerChange("Direction", Number(e.target.value))}
           >
             <option value={DirectionEnum.Up}>Up</option>
             <option value={DirectionEnum.Left}>Left</option>

@@ -4,7 +4,7 @@ import {DirectionEnum, SpiralDirectionEnum} from "./enum.model";
 
 export {
     LocationModel,
-    RobotViewModel as RobotModel,
+    RobotViewModel,
     ////////////////////////
     DirectionEnum,
     SpiralDirectionEnum,

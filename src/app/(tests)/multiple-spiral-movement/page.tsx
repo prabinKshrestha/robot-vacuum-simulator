@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { DirectionEnum, LocationModel, RobotModel } from "@/lib/models";
+import { DirectionEnum, LocationModel, RobotViewModel } from "@/lib/models";
 
 const N_GRID_SIZE: number = 21;
 
@@ -9,10 +9,10 @@ let grid: number[][] = Array(N_GRID_SIZE).fill(Array(N_GRID_SIZE).fill(1));
 
 export default function SpiralMovement() {
   const [robots, setRobots] = useState([
-    new RobotModel(new LocationModel(2, 2), DirectionEnum.Right),
-    new RobotModel(new LocationModel(10, 10), DirectionEnum.Up),
-    new RobotModel(new LocationModel(18, 20), DirectionEnum.Left),
-    new RobotModel(new LocationModel(6, 10), DirectionEnum.Down),
+    new RobotViewModel(new LocationModel(2, 2), DirectionEnum.Right),
+    new RobotViewModel(new LocationModel(10, 10), DirectionEnum.Up),
+    new RobotViewModel(new LocationModel(18, 20), DirectionEnum.Left),
+    new RobotViewModel(new LocationModel(6, 10), DirectionEnum.Down),
   ]);
   const [visitedLocations, setvisitedLocations] = useState([]);
 

@@ -7,7 +7,7 @@ import {
   ROBOT_CLEAN_TIME_SEC_PER_CELL_MAXIMUM,
   ROBOT_CLEAN_TIME_SEC_PER_CELL_MINIMUM,
 } from "@/lib/constants";
-import { DirectionEnum, LocationModel, RobotModel } from "@/lib/models";
+import { DirectionEnum, LocationModel, RobotViewModel } from "@/lib/models";
 import { useState } from "react";
 import RobotFormFields from "./robot_form";
 
@@ -16,11 +16,11 @@ export default function RobotConfigurationForm({ onSubmission }) {
   const [time, setTime] = useState(ROBOT_CLEAN_TIME_SEC_PER_CELL_DEFAULT);
   const [clockwise, setClockwise] = useState(false);
   const [robots, setRobots] = useState([
-    new RobotModel(new LocationModel(1, 1), DirectionEnum.Up),
+    new RobotViewModel(new LocationModel(1, 1), DirectionEnum.Up),
   ]);
   const [errors, setErrors] = useState([]);
 
-  function changeRobot(robot: RobotModel) {
+  function changeRobot(robot: RobotViewModel) {
     let rt = robots.find((r) => r.id == robot.id);
     rt.currentLocation = robot.currentLocation;
     setRobots([...robots]);
@@ -28,11 +28,11 @@ export default function RobotConfigurationForm({ onSubmission }) {
 
   function addRobot() {
     if (robots.length >= 10) return;
-    robots.push(new RobotModel(new LocationModel(1, 1), DirectionEnum.Up));
+    robots.push(new RobotViewModel(new LocationModel(1, 1), DirectionEnum.Up));
     setRobots([...robots]);
   }
 
-  function removeRobot(robot: RobotModel) {
+  function removeRobot(robot: RobotViewModel) {
     if (robots.length == 1) return;
     let i = robots.findIndex((x) => x.id == robot.id);
     if (i > -1) {

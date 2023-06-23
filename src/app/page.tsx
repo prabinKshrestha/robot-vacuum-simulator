@@ -2,14 +2,13 @@
 
 import RobotConfigurationForm from "@/components/forms/form";
 import Grid from "@/components/grids/grid";
-import { RobotModel } from "@/lib/models";
+import { RobotViewModel, SpiralDirectionEnum } from "@/lib/models";
 import { useRef, useState } from "react";
 
 export default function Home() {
   const [render, setRender] = useState(0);
   const [gridLength, setGridLength] = useState(0);
   const [time, setTime] = useState(0);
-  const [clockwise, setClockwise] = useState(false);
   const [robots, setRobots] = useState([]);
   const compRef = useRef(null);
 
@@ -17,11 +16,14 @@ export default function Home() {
     gridLength: number,
     time: number,
     clockwise: boolean,
-    formRobots: RobotModel[]
+    formRobots: RobotViewModel[]
   ) {
     setGridLength(gridLength);
     setTime(time);
-    setClockwise(clockwise);
+    formRobots.forEach(x => {
+      x.setGridSize(gridLength);
+      x.setSpiralDirection(clockwise? SpiralDirectionEnum.Clockwise: SpiralDirectionEnum.AnitClockwise);
+    });
     setRobots(formRobots);
     setRender(render+1);
     setTimeout(() =>
@@ -56,7 +58,6 @@ export default function Home() {
           <Grid
             gridLength={gridLength}
             time={time}
-            clockwise={clockwise}
             formRobots={robots}
           />
         </div>
