@@ -1,13 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { DirectionEnum, LocationModel, RobotModel } from "@/lib/models";
+import { DirectionEnum, LocationModel, RobotModel, SpiralDirectionEnum } from "@/lib/models";
 import cloneDeep from "lodash/cloneDeep";
 import Cell from "./cell";
+import { SpiralMovementSettings } from "@/lib/configs";
 
 let stopMovingRobots: boolean = false;
 
 export default function Grid({ gridLength, time, clockwise, formRobots }) {
+  SpiralMovementSettings.SPIRAL_DIRECTION =  clockwise ? SpiralDirectionEnum.Clockwise : SpiralDirectionEnum.AnitClockwise;
   const [robots, setRobots] = useState(cloneDeep(formRobots));
   const [visitedLocations, setvisitedLocations] = useState([]);
   const classGrid = `grid-cols-${gridLength}`;
