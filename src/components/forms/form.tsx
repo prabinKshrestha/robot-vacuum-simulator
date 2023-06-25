@@ -3,21 +3,23 @@
 import {
   GRID_LENGTH_MAXIMUM,
   GRID_LENGTH_MINIMUM,
+  NUMBER_OF_ROBOTS_MAXIMUM,
+  NUMBER_OF_ROBOTS_MINIMUM,
   ROBOT_CLEAN_TIME_SEC_PER_CELL_DEFAULT,
   ROBOT_CLEAN_TIME_SEC_PER_CELL_MAXIMUM,
   ROBOT_CLEAN_TIME_SEC_PER_CELL_MINIMUM,
 } from "@/lib/constants";
-import { DirectionEnum, LocationModel, RobotViewModel } from "@/lib/models";
+import { RobotViewModel } from "@/lib/models";
 import { useState } from "react";
 import RobotFormFields from "./robot_form";
 
 export default function RobotConfigurationForm({ onSubmission }) {
+
   const [gridLength, setGridLength] = useState(GRID_LENGTH_MINIMUM);
   const [time, setTime] = useState(ROBOT_CLEAN_TIME_SEC_PER_CELL_DEFAULT);
   const [clockwise, setClockwise] = useState(false);
-  const [robots, setRobots] = useState([
-    new RobotViewModel(new LocationModel(1, 1), DirectionEnum.Up),
-  ]);
+  const [robots, setRobots] = useState([RobotViewModel.DefaultRobot()]);
+
   const [errors, setErrors] = useState([]);
 
   function changeRobot(robot: RobotViewModel) {
@@ -28,7 +30,7 @@ export default function RobotConfigurationForm({ onSubmission }) {
 
   function addRobot() {
     if (robots.length >= 10) return;
-    robots.push(new RobotViewModel(new LocationModel(1, 1), DirectionEnum.Up));
+    robots.push(RobotViewModel.DefaultRobot());
     setRobots([...robots]);
   }
 
@@ -42,23 +44,31 @@ export default function RobotConfigurationForm({ onSubmission }) {
   }
 
   function handleSubmit() {
+    let newErrors: string[] = _checkErrors();
+    setErrors(newErrors);
+    if (!newErrors.length) {
+      onSubmission(gridLength, time, clockwise, robots);
+    }
+  }
+
+  function _checkErrors(): string[] {
     let newErrors: string[] = [];
     if (
       !gridLength ||
       gridLength < GRID_LENGTH_MINIMUM ||
       GRID_LENGTH_MINIMUM > GRID_LENGTH_MAXIMUM
     ) {
-      newErrors.push("Grid Size is not valid.");
+      newErrors.push(`Grid Size is not valid. Value should be in between ${GRID_LENGTH_MINIMUM} and ${GRID_LENGTH_MAXIMUM}.`);
     }
     if (
       !time ||
       time < ROBOT_CLEAN_TIME_SEC_PER_CELL_MINIMUM ||
       time > ROBOT_CLEAN_TIME_SEC_PER_CELL_MAXIMUM
     ) {
-      newErrors.push("Time is not valid.");
+      newErrors.push(`Time is not valid. Value should be in between ${GRID_LENGTH_MINIMUM} and ${GRID_LENGTH_MAXIMUM}.`);
     }
-    if (robots.length < 0 || robots.length > 10) {
-      newErrors.push("Number of robot is invalid.");
+    if (robots.length < NUMBER_OF_ROBOTS_MINIMUM || robots.length > NUMBER_OF_ROBOTS_MAXIMUM) {
+      newErrors.push(`Number of robot is invalid. Value should be in between ${NUMBER_OF_ROBOTS_MINIMUM} and ${NUMBER_OF_ROBOTS_MAXIMUM}.`);
     }
     if (
       robots.findIndex(
@@ -71,10 +81,7 @@ export default function RobotConfigurationForm({ onSubmission }) {
     ) {
       newErrors.push("Location of one or more robot is not valid.");
     }
-    setErrors(newErrors);
-    if (!newErrors.length) {
-      onSubmission(gridLength, time, clockwise, robots);
-    }
+    return newErrors;
   }
 
   return (

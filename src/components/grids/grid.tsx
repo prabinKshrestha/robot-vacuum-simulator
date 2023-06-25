@@ -12,8 +12,14 @@ import Cell from "./cell";
 
 let stopMovingRobots: boolean = false;
 
-export default function Grid({ gridLength, time, formRobots }) {
-    const [robots, setRobots] = useState(cloneDeep(formRobots));
+export default function Grid({ gridLength, time, formRobots, onRestart }) {
+
+    let robotsCloned = cloneDeep(formRobots);
+    robotsCloned.forEach(x => {
+        x.currentLocation = new LocationModel(x.currentLocation.getX() - 1, x.currentLocation.getY() - 1);
+    });
+
+    const [robots, setRobots] = useState(robotsCloned);
     const [visitedLocations, setvisitedLocations] = useState([]);
     const classGrid = `grid-cols-${gridLength}`;
 
@@ -60,7 +66,7 @@ export default function Grid({ gridLength, time, formRobots }) {
     }
 
     return (
-        <div className="w-full h-screen py-20 px-10 flex justify-items-center items-center">
+        <div className="w-full h-screen py-20 px-10 flex justify-items-center items-center relative">
             <div
                 className={`mx-auto inline-grid border border-black grid-flow-row gap-0 ${classGrid}`}
             >
@@ -75,6 +81,15 @@ export default function Grid({ gridLength, time, formRobots }) {
                             />
                         ))
                     )}
+            </div>
+            <div className="absolute right-14 bottom-14">
+                <button
+                    className="shadow bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-white font-medium py-2 px-4 rounded"
+                    type="button"
+                    onClick={onRestart}
+                >
+                    Change Configuration
+                </button>
             </div>
         </div>
     );

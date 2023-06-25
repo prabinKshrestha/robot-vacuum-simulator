@@ -2,15 +2,25 @@
 
 import RobotConfigurationForm from "@/components/forms/form";
 import Grid from "@/components/grids/grid";
-import { RobotViewModel, SpiralDirectionEnum } from "@/lib/models";
+import { LocationModel, RobotViewModel, SpiralDirectionEnum } from "@/lib/models";
 import { useRef, useState } from "react";
 
 export default function Home() {
+
+  const gridRef = useRef(null);
+  const formRef = useRef(null);
+
   const [render, setRender] = useState(0);
   const [gridLength, setGridLength] = useState(0);
   const [time, setTime] = useState(0);
   const [robots, setRobots] = useState([]);
-  const compRef = useRef(null);
+
+  //#region Functions
+
+  function onRestartForm() {
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setTimeout(() => setGridLength(0), 500);
+  }
 
   function onFormSubmission(
     gridLength: number,
@@ -18,18 +28,22 @@ export default function Home() {
     clockwise: boolean,
     formRobots: RobotViewModel[]
   ) {
-    setGridLength(gridLength);
-    setTime(time);
     formRobots.forEach(x => {
       x.setGridSize(gridLength);
-      x.setSpiralDirection(clockwise? SpiralDirectionEnum.Clockwise: SpiralDirectionEnum.AnitClockwise);
+      x.setSpiralDirection(clockwise ? SpiralDirectionEnum.Clockwise : SpiralDirectionEnum.AnitClockwise);
     });
+    setGridLength(gridLength);
+    setTime(time);
     setRobots(formRobots);
-    setRender(render+1);
+
+    setRender(render + 1);
+
     setTimeout(() =>
-      compRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
+      gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
     );
   }
+
+  //#endregion
 
   return (
     <>
@@ -52,13 +66,16 @@ export default function Home() {
         </div>
       </div>
       <div className="h-screen w-full"></div>
-      <RobotConfigurationForm onSubmission={onFormSubmission} />
+      <div ref={formRef} >
+        <RobotConfigurationForm onSubmission={onFormSubmission} />
+      </div>
       {gridLength ? (
-        <div ref={compRef} key={render}>
+        <div ref={gridRef} key={render}>
           <Grid
             gridLength={gridLength}
             time={time}
             formRobots={robots}
+            onRestart={onRestartForm}
           />
         </div>
       ) : (

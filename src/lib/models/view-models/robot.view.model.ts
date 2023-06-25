@@ -6,32 +6,22 @@ import { v4 as uuidv4 } from "uuid";
 export class RobotViewModel extends SpiralMover {
   private _id: number;
 
-  private _initialLocation: LocationModel;
   private _currentLocation: LocationModel;
   private _intialDirection: DirectionEnum;
 
-  constructor(initialLocation: LocationModel, intialDirection: DirectionEnum) {
+  public static DefaultRobot(): RobotViewModel {
+    return new RobotViewModel(new LocationModel(1, 1), DirectionEnum.Up);
+  }
+
+  constructor(location: LocationModel, intialDirection: DirectionEnum) {
     super(intialDirection);
     this._intialDirection = intialDirection;
-    this._initialLocation = initialLocation;
-    this._currentLocation = new LocationModel(
-      initialLocation.getX(),
-      initialLocation.getY()
-    );
+    this._currentLocation = location;
     this._id = uuidv4();
   }
 
   public get id(): number {
     return this._id;
-  }
-
-  // Location
-  public get initialLocation(): LocationModel {
-    return this._initialLocation;
-  }
-
-  public set initialLocation(initialLocation: LocationModel) {
-    this._initialLocation = initialLocation;
   }
 
   public get currentLocation(): LocationModel {
