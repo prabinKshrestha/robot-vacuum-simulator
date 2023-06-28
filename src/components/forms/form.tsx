@@ -175,7 +175,7 @@ export default function RobotConfigurationForm({ onSubmission }) {
               <div className="w-1/3"></div>
               <div className="w-2/3">
                 <button
-                  className="shadow bg-orange-600 hover:bg-orange-700 focus:shadow-outline focus:outline-none text-white font-medium py-2 px-4 rounded"
+                  className="shadow bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-white font-medium py-2 px-4 rounded"
                   type="button"
                   onClick={handleSubmit}
                 >
