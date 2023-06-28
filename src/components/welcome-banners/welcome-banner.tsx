@@ -1,9 +1,9 @@
-export default function WelcomeBanner() {
+export default function WelcomeBanner({onStartClick}) {
     return <>
         <div className="h-screen absolute left-0 right-0  top-0">
-            <div className="flex h-full relative">
+            <div className="flex h-full relative px-20">
                 <div className="w-1/2 relative">
-                    <div className="absolute top-1/2 left-20 transorm -translate-y-1/2">
+                    <div className="absolute top-1/2 transorm -translate-y-1/2">
                         <div className="text-5xl font-extrabold tracking-wider leading-10 uppercase relative pl-4 py-2 border-l-8 border-l-orange-500">
                             <h1 className="my-4">Robot</h1>
                             <h1 className="my-4">Vacuum</h1>
@@ -13,20 +13,15 @@ export default function WelcomeBanner() {
                 </div>
                 <div className="w-1/2 relative px-10">
                     <img
-                        className="object-cover h-auto w-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                        className="object-cover h-auto w-11/12 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                         src="/0.png"
                     />
                 </div>
-                <div className="cursor-pointer bg-orange-500 h-28 w-28 rounded-full absolute bottom-10 left-1/2 transorm -translate-x-1/2 p-1 flex items-center justify-center shadow-lg shadow-orange-200 transition duration-200 hover:scale-110">
+                <div onClick={onStartClick} className="cursor-pointer bg-orange-500 h-28 w-28 rounded-full absolute bottom-10 left-1/2 transorm -translate-x-1/2 p-1 flex items-center justify-center shadow-xl transition duration-200 hover:scale-110">
                     <div className="cursor-pointer bg-orange-500 h-full w-full border-white border-2 rounded-full flex items-center justify-center">
                         <h3 className="text-white text-xl font-bold tracking-wider">Start</h3>
                     </div>
                 </div>
-                {/* <div className="cursor-pointer bg-orange-500 h-28 w-28 rounded-full absolute bottom-10 left-1/2 transorm -translate-x-1/2 flex items-center justify-center shadow-lg shadow-orange-200 transition duration-200 hover:scale-110">
-                    <div className="cursor-pointer bg-orange-500 h-28 w-28 rounded-full flex items-center justify-center">
-                        <h3 className="text-white text-xl font-bold tracking-wider">Start</h3>
-                    </div>
-                </div> */}
             </div>
         </div>
         <div className="h-screen w-full"></div>

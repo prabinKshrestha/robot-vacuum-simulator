@@ -85,10 +85,10 @@ export default function RobotConfigurationForm({ onSubmission }) {
   }
 
   return (
-    <div className="w-full h-screen py-10 px-10">
+    <div className="w-full h-screen py-10 px-20">
       <div className="robot-form w-full h-screen flex justify-items-center">
         <div className="m-auto flex-1 pr-16">
-          <h1 className="font-bold text-4xl text-center mb-16">
+          <h1 className="font-bold text-4xl relative text-center mb-16 z-50 before:content-[''] before:absolute before:h-24 before:w-20 before:border-8 before:border-r-0 before:z-0 before:border-orange-500 before:-top-7 before:-left-6">
             Let's Configure the Robots and Playground.
           </h1>
           <div className="form-wrapper w-full px-10">
@@ -175,7 +175,7 @@ export default function RobotConfigurationForm({ onSubmission }) {
               <div className="w-1/3"></div>
               <div className="w-2/3">
                 <button
-                  className="shadow bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-white font-medium py-2 px-4 rounded"
+                  className="shadow bg-orange-600 hover:bg-orange-700 focus:shadow-outline focus:outline-none text-white font-medium py-2 px-4 rounded"
                   type="button"
                   onClick={handleSubmit}
                 >
@@ -187,10 +187,12 @@ export default function RobotConfigurationForm({ onSubmission }) {
         </div>
         <div className="flex-1">
           <div className="mb-14 relative">
-            <h3 className="text-center text-xl font-bold mb-2">Robots</h3>
+            <h3 className="text-center text-xl font-bold mb-2 ">
+              <span className="relative after:content-[''] after:absolute after:h-1 after:w-10 after:bg-orange-500 after:left-0 after:-bottom-1">Robots</span>
+            </h3>
             <button
               onClick={addRobot}
-              className="absolute right-0 top-0 shadow bg-blue-500 hover:bg-blue-700 focus:shadow-outline focus:outline-none text-sm text-white py-2 px-3 rounded"
+              className="absolute right-0 top-0 shadow bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-sm text-white py-2 px-3 rounded"
               type="button"
             >
               Add robot

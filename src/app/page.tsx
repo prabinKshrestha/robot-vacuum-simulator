@@ -19,6 +19,10 @@ export default function Home() {
   //#region Functions
 
   function onRestartForm() {
+    scrollToForm();
+  }
+
+  function scrollToForm() {
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     setTimeout(() => setGridLength(0), 500);
   }
@@ -48,7 +52,7 @@ export default function Home() {
 
   return (
     <>
-      <WelcomeBanner />
+      <WelcomeBanner onStartClick={scrollToForm} />
       <div ref={formRef} >
         <RobotConfigurationForm onSubmission={onFormSubmission} />
       </div>
