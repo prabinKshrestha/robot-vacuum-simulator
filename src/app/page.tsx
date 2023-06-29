@@ -11,6 +11,7 @@ export default function Home() {
   const gridRef = useRef(null);
   const formRef = useRef(null);
 
+  const [showForm, setshowForm] = useState(0);
   const [render, setRender] = useState(0);
   const [gridLength, setGridLength] = useState(0);
   const [time, setTime] = useState(0);
@@ -20,11 +21,17 @@ export default function Home() {
 
   function onRestartForm() {
     scrollToForm();
+    setTimeout(() => setGridLength(0), 500);
   }
 
   function scrollToForm() {
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    setTimeout(() => setGridLength(0), 500);
+  }
+
+  function startClick() {
+    setshowForm(showForm + 1);
+    setGridLength(0);
+    setTimeout(() => scrollToForm(), 200);
   }
 
   function onFormSubmission(
@@ -52,10 +59,13 @@ export default function Home() {
 
   return (
     <>
-      <WelcomeBanner onStartClick={scrollToForm} />
-      <div ref={formRef} >
-        <RobotConfigurationForm onSubmission={onFormSubmission} />
-      </div>
+      <WelcomeBanner onStartClick={startClick} />
+      {
+        showForm > 0 ?
+          <div ref={formRef} >
+            <RobotConfigurationForm onSubmission={onFormSubmission} />
+          </div> : ""
+      }
       {gridLength ? (
         <div ref={gridRef} key={render}>
           <Grid

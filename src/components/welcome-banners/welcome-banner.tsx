@@ -17,8 +17,8 @@ export default function WelcomeBanner({onStartClick}) {
                         src="/0.png"
                     />
                 </div>
-                <div onClick={onStartClick} className="cursor-pointer bg-orange-500 h-28 w-28 rounded-full absolute bottom-10 left-1/2 transorm -translate-x-1/2 p-1 flex items-center justify-center shadow-xl transition duration-200 hover:scale-110">
-                    <div className="cursor-pointer bg-orange-500 h-full w-full border-white border-2 rounded-full flex items-center justify-center">
+                <div onClick={onStartClick} className="cursor-pointer bg-purple-600 h-28 w-28 rounded-full absolute bottom-10 left-1/2 transorm -translate-x-1/2 p-1 flex items-center justify-center shadow-xl transition duration-200 hover:scale-110">
+                    <div className="cursor-pointer bg-purple-600 h-full w-full border-white border-2 rounded-full flex items-center justify-center">
                         <h3 className="text-white text-xl font-bold tracking-wider">Start</h3>
                     </div>
                 </div>

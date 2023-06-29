@@ -10,7 +10,7 @@ export default function Header() {
 
         <div className="grow-0">
           <Link href="/">
-            <h4 className=" text-md">Home</h4>
+            <h4 className="text-md border-b-2 border-white hover:border-orange-500 box-content px-1">Home</h4>
             {/* <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -23,7 +23,7 @@ export default function Header() {
         </div>
         <div className="grow text-right">
           <Link href={GITHUB_REPOSITORY_LINK} target="_blank">
-            <button className="transition rounded border border-orange-500 text-orange-500 px-4 py-1 hover:bg-orange-500 hover:text-white duration-100 text-md">
+            <button className="transition rounded border border-orange-500 text-orange-500 px-4 py-1 hover:bg-orange-400 hover:text-white duration-100 text-md">
               GitHub
             </button>
           </Link>
