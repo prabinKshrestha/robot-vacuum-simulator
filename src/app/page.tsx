@@ -2,6 +2,7 @@
 
 import RobotConfigurationForm from "@/components/forms/form";
 import Grid from "@/components/grids/grid";
+import Information from "@/components/information/information";
 import WelcomeBanner from "@/components/welcome-banners/welcome-banner";
 import { LocationModel, RobotViewModel, SpiralDirectionEnum } from "@/lib/models";
 import { useRef, useState } from "react";
@@ -11,13 +12,19 @@ export default function Home() {
   const gridRef = useRef(null);
   const formRef = useRef(null);
 
-  const [showForm, setshowForm] = useState(0);
-  const [render, setRender] = useState(0);
+  const [formRenderCount, setFormRenderCount] = useState(0);
+  const [simulationRenderCount, setSimulationRenderCount] = useState(0);
   const [gridLength, setGridLength] = useState(0);
   const [time, setTime] = useState(0);
   const [robots, setRobots] = useState([]);
 
   //#region Functions
+
+  function welcomeStartClick() {
+    setFormRenderCount(formRenderCount + 1);
+    setGridLength(0);
+    setTimeout(() => scrollToForm(), 200);
+  }
 
   function onRestartForm() {
     scrollToForm();
@@ -26,12 +33,6 @@ export default function Home() {
 
   function scrollToForm() {
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }
-
-  function startClick() {
-    setshowForm(showForm + 1);
-    setGridLength(0);
-    setTimeout(() => scrollToForm(), 200);
   }
 
   function onFormSubmission(
@@ -48,7 +49,7 @@ export default function Home() {
     setTime(time);
     setRobots(formRobots);
 
-    setRender(render + 1);
+    setSimulationRenderCount(simulationRenderCount + 1); //to re-render the simulator component
 
     setTimeout(() =>
       gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })
@@ -59,15 +60,16 @@ export default function Home() {
 
   return (
     <>
-      <WelcomeBanner onStartClick={startClick} />
+      <WelcomeBanner onStartClick={welcomeStartClick} />
+      <Information />
       {
-        showForm > 0 ?
+        formRenderCount > 0 ?
           <div ref={formRef} >
             <RobotConfigurationForm onSubmission={onFormSubmission} />
           </div> : ""
       }
       {gridLength ? (
-        <div ref={gridRef} key={render}>
+        <div ref={gridRef} key={simulationRenderCount}>
           <Grid
             gridLength={gridLength}
             time={time}

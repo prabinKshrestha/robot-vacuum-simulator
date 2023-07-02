@@ -22,6 +22,8 @@ export default function RobotConfigurationForm({ onSubmission }) {
 
   const [errors, setErrors] = useState([]);
 
+  //#region Functions
+
   function changeRobot(robot: RobotViewModel) {
     let rt = robots.find((r) => r.id == robot.id);
     rt.currentLocation = robot.currentLocation;
@@ -83,6 +85,8 @@ export default function RobotConfigurationForm({ onSubmission }) {
     }
     return newErrors;
   }
+
+  //#endregion
 
   return (
     <div className="w-full h-screen py-10 px-20">
@@ -148,7 +152,6 @@ export default function RobotConfigurationForm({ onSubmission }) {
                   id="input-clockwise"
                   className="mr-2 leading-tight"
                   type="checkbox"
-                  step={0.1}
                   defaultChecked={clockwise}
                   onChange={(e) => setClockwise(Boolean(e.target.value))}
                 />
@@ -161,7 +164,7 @@ export default function RobotConfigurationForm({ onSubmission }) {
                 role="alert"
               >
                 <p className="font-bold mb-2">Errors</p>
-                <ul className="list-disc pl-6">
+                <ul className="list-disc pl-6 text-sm">
                   {errors.map((x) => (
                     <li>{x}</li>
                   ))}

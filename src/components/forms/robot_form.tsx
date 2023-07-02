@@ -6,6 +6,7 @@ export default function RobotFormFields({
   onRemove,
   onChangeRobots,
 }) {
+
   function triggerChange(type: "X" | "Y" | "Direction", value: number | any) {
     switch (type) {
       case "X":

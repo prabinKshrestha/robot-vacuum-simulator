@@ -7,7 +7,7 @@ export default function WelcomeBanner({onStartClick}) {
                         <div className="text-5xl font-extrabold tracking-wider leading-10 uppercase relative pl-4 py-2 border-l-8 border-l-orange-500">
                             <h1 className="my-4">Robot</h1>
                             <h1 className="my-4">Vacuum</h1>
-                            <h1 className="my-4">Simulator</h1>
+                            <h1 className="my-4">Simulation</h1>
                         </div>
                     </div>
                 </div>
