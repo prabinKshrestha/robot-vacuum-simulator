@@ -82,7 +82,7 @@ export default function Grid({ gridLength, time, formRobots, onRestart }) {
                         ))
                     )}
             </div>
-            <div className="absolute right-14 bottom-14">
+            <div className="absolute left-1/2 bottom-10 -translate-x-1/2">
                 <button
                     className="shadow bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-white font-medium py-2 px-4 rounded"
                     type="button"

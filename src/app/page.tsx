@@ -11,6 +11,7 @@ export default function Home() {
 
   const gridRef = useRef(null);
   const formRef = useRef(null);
+  const infoRef = useRef(null);
 
   const [formRenderCount, setFormRenderCount] = useState(0);
   const [simulationRenderCount, setSimulationRenderCount] = useState(0);
@@ -21,6 +22,12 @@ export default function Home() {
   //#region Functions
 
   function welcomeStartClick() {
+    setTimeout(() => {
+      infoRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
+  function configurationClick() {
     setFormRenderCount(formRenderCount + 1);
     setGridLength(0);
     setTimeout(() => scrollToForm(), 200);
@@ -61,7 +68,9 @@ export default function Home() {
   return (
     <>
       <WelcomeBanner onStartClick={welcomeStartClick} />
-      <Information />
+      <div ref={infoRef}>
+        <Information onConfigurationClick={configurationClick} />
+      </div>
       {
         formRenderCount > 0 ?
           <div ref={formRef} >

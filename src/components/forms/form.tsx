@@ -89,9 +89,9 @@ export default function RobotConfigurationForm({ onSubmission }) {
   //#endregion
 
   return (
-    <div className="w-full h-screen py-10 px-20">
-      <div className="robot-form w-full h-screen flex justify-items-center">
-        <div className="m-auto flex-1 pr-16">
+    <div className="w-full h-screen pt-24 pb-10 px-20 relative">
+      <div className="robot-form w-full flex justify-items-center">
+        <div className="m-auto flex-1 h-full pr-16 flex flex-col justify-items-center items-center">
           <h1 className="font-bold text-4xl relative text-center mb-16 z-50 before:content-[''] before:absolute before:h-24 before:w-20 before:border-8 before:border-r-0 before:z-0 before:border-orange-500 before:-top-7 before:-left-6">
             Let's Configure the Robots and Playground.
           </h1>
@@ -174,18 +174,6 @@ export default function RobotConfigurationForm({ onSubmission }) {
               ""
             )}
 
-            <div className="flex items-center mt-10">
-              <div className="w-1/3"></div>
-              <div className="w-2/3">
-                <button
-                  className="shadow bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-white font-medium py-2 px-4 rounded"
-                  type="button"
-                  onClick={handleSubmit}
-                >
-                  Start Simulation
-                </button>
-              </div>
-            </div>
           </div>
         </div>
         <div className="flex-1">
@@ -215,6 +203,15 @@ export default function RobotConfigurationForm({ onSubmission }) {
             ))}
           </ol>
         </div>
+      </div>
+      <div className="absolute left-1/2 bottom-5 -translate-x-1/2">
+        <button
+          className="shadow bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-white font-medium py-2 px-4 rounded"
+          type="button"
+          onClick={handleSubmit}
+        >
+          Start Simulation
+        </button>
       </div>
     </div>
   );
