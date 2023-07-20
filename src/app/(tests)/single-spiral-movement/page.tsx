@@ -9,7 +9,6 @@ let grid: number[][] = Array(N_GRID_SIZE).fill(Array(N_GRID_SIZE).fill(1));
 
 let layerSide: number = 1;
 let leg: "U" | "L" | "D" | "R" = "D";
-let nextDirection: DirectionEnum = DirectionEnum.D;
 let counter: number = 0;
 let cancel = false;
 

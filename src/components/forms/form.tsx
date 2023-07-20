@@ -94,7 +94,7 @@ export default function RobotConfigurationForm({ onSubmission }) {
       <div className="robot-form w-full flex justify-items-center">
         <div className="m-auto flex-1 h-full pr-16 flex flex-col justify-items-center items-center">
           <h1 className="font-bold text-4xl relative text-center mb-16 z-50 before:content-[''] before:absolute before:h-24 before:w-20 before:border-8 before:border-r-0 before:z-0 before:border-orange-500 before:-top-7 before:-left-6">
-            Let's Configure the Robots and Playground.
+            Let&apos;s Configure the Robots and Playground.
           </h1>
           <div className="form-wrapper w-full px-10">
             <div className="flex items-center mb-6">
@@ -167,7 +167,7 @@ export default function RobotConfigurationForm({ onSubmission }) {
                 <p className="font-bold mb-2">Errors</p>
                 <ul className="list-disc pl-6 text-sm">
                   {errors.map((x) => (
-                    <li>{x}</li>
+                    <li key={x}>{x}</li>
                   ))}
                 </ul>
               </div>
@@ -192,7 +192,8 @@ export default function RobotConfigurationForm({ onSubmission }) {
           </div>
           <ol className="list-decimal">
             {robots.map((r) => (
-              <li>
+              <li 
+              key={r.id}>
                 <RobotFormFields
                   key={r.id}
                   gridLength={gridLength}

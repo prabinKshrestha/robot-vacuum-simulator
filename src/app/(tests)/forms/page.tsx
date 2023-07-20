@@ -64,7 +64,7 @@ export default function RobotConfigurationForm() {
     <div className="robot-form w-full h-screen py-20 flex justify-items-center">
       <div className="m-auto flex-1 px-16">
         <h1 className="font-bold text-4xl text-center mb-16">
-          Let's Configure the Robots and Playground.
+          Let&apos;s Configure the Robots and Playground.
         </h1>
         <div className="form-wrapper w-full px-10">
           <div className="flex items-center mb-6">
@@ -143,7 +143,7 @@ export default function RobotConfigurationForm() {
               <p className="font-bold mb-2">Errors</p>
               <ul className="list-disc pl-6">
                 {errors.map((x) => (
-                  <li>{x}</li>
+                  <li key={x}>{x}</li>
                 ))}
               </ul>
             </div>
@@ -178,7 +178,7 @@ export default function RobotConfigurationForm() {
         </div>
         <ol className="list-decimal">
           {robots.map((r) => (
-            <li>
+            <li key={r.id}>
               <RobotFormFields
                 key={r.id}
                 gridLength={gridLength}

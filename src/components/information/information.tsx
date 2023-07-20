@@ -7,7 +7,7 @@ export default function Information({onConfigurationClick}) {
             <div className="mt-10">
                 <p>
                     I had an assignment question for one of my courses while studying MASC in Software Engineering at Memorial University of Newfoundland.
-                    It wasn't the exact question, but it was similar. Instead of just answering it, I decided to write a code to solve it, implement it in the web and learn React in the process.
+                    It wasn&apos;t the exact question, but it was similar. Instead of just answering it, I decided to write a code to solve it, implement it in the web and learn React in the process.
                     My main goal was to learn and begin working with React.js.
                 </p>
             </div>
@@ -17,7 +17,7 @@ export default function Information({onConfigurationClick}) {
                     Problem
                 </p>
                 <p className="py-2">
-                    " For this assignment you will simulate a group of robot vacuums cleaning a dirty room. You can assume that
+                &quot; For this assignment you will simulate a group of robot vacuums cleaning a dirty room. You can assume that
                     the robot can clean a 0.5 m x 0.5 m section of the room every 2 seconds, and you may assume the room is
                     divided into a grid of 0.5 m x 0.5 m cells. For simplicity, you may assume the room is square in shape so
                     that its length and width are identical.
@@ -55,7 +55,7 @@ export default function Information({onConfigurationClick}) {
                     from bottom to top). If a robot is at the boundary of the room and about to hit a wall, then it should turn
                     counterclockwise and continue travelling counterclockwise along the walls of the room in a circular loop, and
                     no longer a spiral pattern. If the entire room becomes clean before any collision occurs, then the following message
-                    should be output to standard output *ROOM CLEAN*, after which the simulation should end. "
+                    should be output to standard output *ROOM CLEAN*, after which the simulation should end. &quot;
                 </p>
             </div>
             <div className="text-center py-10">

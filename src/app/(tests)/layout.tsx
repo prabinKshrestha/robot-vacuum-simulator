@@ -11,7 +11,7 @@ export default function TestLayout({
         </h3>
         <p className="pt-0 pb-4 px-4 text-sm">
           This component is not a final version but rather a part of the ongoing
-          development process. Its purpose is to preserve the code's progress
+          development process. Its purpose is to preserve the code&apos;s progress
           and allow for easy viewing through routes.
         </p>
       </div>
