@@ -12,10 +12,11 @@ import {
 import { RobotViewModel } from "@/lib/models";
 import { useState } from "react";
 import RobotFormFields from "./robot_form";
+import { GRID_LENGTH_DEFAULT } from "@/lib/constants/business-constant";
 
 export default function RobotConfigurationForm({ onSubmission }) {
 
-  const [gridLength, setGridLength] = useState(GRID_LENGTH_MINIMUM);
+  const [gridLength, setGridLength] = useState(GRID_LENGTH_DEFAULT);
   const [time, setTime] = useState(ROBOT_CLEAN_TIME_SEC_PER_CELL_DEFAULT);
   const [clockwise, setClockwise] = useState(false);
   const [robots, setRobots] = useState([RobotViewModel.DefaultRobot()]);

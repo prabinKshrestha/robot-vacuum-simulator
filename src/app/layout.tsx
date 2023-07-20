@@ -11,7 +11,7 @@ const poppin = Poppins({
 
 export const metadata = {
   title: "Robot Vacuum Stimulation",
-  description: "Stimulation for Robot Vacuum",
+  description: "Stimulation for Robot Vacuum - Project by Prabin Kumar Shrestha",
 };
 
 export default function RootLayout({

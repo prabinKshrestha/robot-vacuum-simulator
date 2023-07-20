@@ -9,9 +9,9 @@ import { useRef, useState } from "react";
 
 export default function Home() {
 
-  const gridRef = useRef(null);
-  const formRef = useRef(null);
-  const infoRef = useRef(null);
+  const gridRef = useRef(null); //reference grid section
+  const formRef = useRef(null); //reference form section
+  const infoRef = useRef(null); //reference information section
 
   const [formRenderCount, setFormRenderCount] = useState(0);
   const [simulationRenderCount, setSimulationRenderCount] = useState(0);
@@ -23,6 +23,7 @@ export default function Home() {
 
   function welcomeStartClick() {
     setTimeout(() => {
+      //when welcome start button clicked, slide it to the information section
       infoRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   }
@@ -39,6 +40,7 @@ export default function Home() {
   }
 
   function scrollToForm() {
+    // scroll to form
     formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
@@ -49,7 +51,8 @@ export default function Home() {
     formRobots: RobotViewModel[]
   ) {
     formRobots.forEach(x => {
-      x.setGridSize(gridLength);
+      //assigning properties to the robot model for the configuration
+      x.setGridSize(gridLength); 
       x.setSpiralDirection(clockwise ? SpiralDirectionEnum.Clockwise : SpiralDirectionEnum.AnitClockwise);
     });
     setGridLength(gridLength);
