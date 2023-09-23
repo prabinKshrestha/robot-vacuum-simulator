@@ -26,11 +26,11 @@ export default function RobotFormFields({
     <div className="flex text-sm ml-4 mt-2 first::mt-0">
       <div className="flex flex-1 items-center">
         <div className="w-1/12">
-          <label className="block font-bold mb-1 mb-0 pr-2">X</label>
+          <label className="block font-bold mb-1 pr-2">X</label>
         </div>
         <div className="w-5/12 pr-2">
           <input
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
             type="number"
             min={1}
             max={gridLength}
@@ -39,11 +39,11 @@ export default function RobotFormFields({
           />
         </div>
         <div className="w-1/12">
-          <label className="block font-bold mb-1 mb-0 pr-2">Y</label>
+          <label className="block font-bold mb-1 pr-2">Y</label>
         </div>
         <div className="w-5/12">
           <input
-            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
             type="number"
             min={1}
             max={gridLength}
@@ -60,7 +60,7 @@ export default function RobotFormFields({
         </div>
         <div className="w-2/4">
           <select
-            className="bg-gray-200 text-center appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+            className="bg-gray-200 text-center appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-500"
             value={robot.intialDirection}
             onChange={(e) => triggerChange("Direction", Number(e.target.value))}
           >

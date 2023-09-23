@@ -49,6 +49,7 @@ export default function RobotConfigurationForm({ onSubmission }) {
   function handleSubmit() {
     let newErrors: string[] = _checkErrors();
     setErrors(newErrors);
+    console.log(newErrors);
     if (!newErrors.length) {
       onSubmission(gridLength, time, clockwise, robots);
     }
@@ -90,131 +91,135 @@ export default function RobotConfigurationForm({ onSubmission }) {
   //#endregion
 
   return (
-    <div className="w-full h-screen pt-24 pb-10 px-20 relative">
-      <div className="robot-form w-full flex justify-items-center">
-        <div className="m-auto flex-1 h-full pr-16 flex flex-col justify-items-center items-center">
-          <h1 className="font-bold text-4xl relative text-center mb-16 z-50 before:content-[''] before:absolute before:h-24 before:w-20 before:border-8 before:border-r-0 before:z-0 before:border-orange-500 before:-top-7 before:-left-6">
-            Let&apos;s Configure the Robots and Playground.
-          </h1>
-          <div className="form-wrapper w-full px-10">
-            <div className="flex items-center mb-6">
-              <div className="w-2/4">
-                <label
-                  className="block font-bold text-right mb-1 mb-0 pr-4"
-                  htmlFor="input-gridLength"
-                >
-                  Grid Size
-                </label>
-              </div>
-              <div className="w-2/4">
-                <input
-                  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                  id="input-gridLength"
-                  type="number"
-                  min={GRID_LENGTH_MINIMUM}
-                  max={GRID_LENGTH_MAXIMUM}
-                  defaultValue={gridLength}
-                  onChange={(e) => setGridLength(Number(e.target.value))}
-                />
-              </div>
-            </div>
-            <div className="flex items-center mb-6">
-              <div className="w-2/4">
-                <label
-                  className="block font-bold text-right mb-1 mb-0 pr-4"
-                  htmlFor="input-time"
-                >
-                  Time (in seconds)
-                </label>
-              </div>
-              <div className="w-2/4">
-                <input
-                  className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                  id="input-time"
-                  type="number"
-                  min={ROBOT_CLEAN_TIME_SEC_PER_CELL_MINIMUM}
-                  max={ROBOT_CLEAN_TIME_SEC_PER_CELL_MAXIMUM}
-                  defaultValue={time}
-                  onChange={(e) => setTime(Number(e.target.value))}
-                />
-              </div>
-            </div>
-            <div className="flex items-center mb-12">
-              <div className="w-2/4">
-                <label
-                  className="block font-bold text-right mb-1 mb-0 pr-4"
-                  htmlFor="input-clockwise"
-                >
-                  Clockwise
-                </label>
-              </div>
-              <div className="w-2/4">
-                <input
-                  id="input-clockwise"
-                  className="mr-2 leading-tight"
-                  type="checkbox"
-                  defaultChecked={clockwise}
-                  onChange={(e) => setClockwise(Boolean(e.target.value))}
-                />
-              </div>
-            </div>
-
-            {errors.length > 0 ? (
-              <div
-                className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4"
-                role="alert"
-              >
-                <p className="font-bold mb-2">Errors</p>
-                <ul className="list-disc pl-6 text-sm">
-                  {errors.map((x) => (
-                    <li key={x}>{x}</li>
-                  ))}
-                </ul>
-              </div>
-            ) : (
-              ""
-            )}
-
-          </div>
+    <>
+      <div className="relative">
+        <div className="h-24">
         </div>
-        <div className="flex-1">
-          <div className="mb-14 relative">
-            <h3 className="text-center text-xl font-bold mb-2 ">
-              <span className="relative after:content-[''] after:absolute after:h-1 after:w-10 after:bg-orange-500 after:left-0 after:-bottom-1">Robots</span>
-            </h3>
+        <div className="bg-white  absolute top-8 left-20 w-1/2 py-10 shadow-lg  rounded-3xl flex justify-center items-center">
+          <div className="h-24 rounded w-4 bg-orange-500"></div>
+          <span className="font-bold text-4xl relative text-center px-10">
+            Let&apos;s Configure Robots and Simulation Playground.
+          </span>
+        </div>
+        <div className="h-28 bg-white"></div>
+        <div className="h-screen w-full bg-white flex flex-col justify-between">
+          <div className="flex">
+            <div className="w-1/2 flex justify-center pt-20">
+              <div className="form-wrapper w-full px-10">
+                <div className="flex items-center mb-6">
+                  <div className="w-2/4">
+                    <label className="block font-bold text-right mb-1 pr-4" htmlFor="input-gridLength">Grid Size</label>
+                  </div>
+                  <div className="w-2/4">
+                    <input
+                      className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-400"
+                      id="input-gridLength"
+                      type="number"
+                      min={GRID_LENGTH_MINIMUM}
+                      max={GRID_LENGTH_MAXIMUM}
+                      defaultValue={gridLength}
+                      onChange={(e) => setGridLength(Number(e.target.value))}
+                    />
+                  </div>
+                </div>
+                <div className="flex items-center mb-6">
+                  <div className="w-2/4">
+                    <label
+                      className="block font-bold text-right mb-0 pr-4"
+                      htmlFor="input-time"
+                    >
+                      Time (in seconds)
+                    </label>
+                  </div>
+                  <div className="w-2/4">
+                    <input
+                      className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-orange-400"
+                      id="input-time"
+                      type="number"
+                      min={ROBOT_CLEAN_TIME_SEC_PER_CELL_MINIMUM}
+                      max={ROBOT_CLEAN_TIME_SEC_PER_CELL_MAXIMUM}
+                      defaultValue={time}
+                      onChange={(e) => setTime(Number(e.target.value))}
+                    />
+                  </div>
+                </div>
+                <div className="flex items-center mb-12">
+                  <div className="w-2/4">
+                    <label
+                      className="block font-bold text-right mb-1 pr-4"
+                      htmlFor="input-clockwise"
+                    >
+                      Clockwise
+                    </label>
+                  </div>
+                  <div className="w-2/4">
+                    <input
+                      id="input-clockwise"
+                      className="mr-2 leading-tight"
+                      type="checkbox"
+                      defaultChecked={clockwise}
+                      onChange={(e) => setClockwise(Boolean(e.target.value))}
+                    />
+                  </div>
+                </div>
+                {errors.length > 0 ? (
+                  <div
+                    className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4"
+                    role="alert"
+                  >
+                    <p className="font-bold mb-2">Errors</p>
+                    <ul className="list-disc pl-6 text-sm">
+                      {errors.map((x) => (
+                        <li key={x}>{x}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+            </div>
+            <div className="w-1/2 px-20">
+              <div className="mb-14 relative">
+                <h3 className="text-center text-xl font-bold mb-2 ">
+                  <span className="relative border-b-4 border-b-orange-500 px-2">Robots</span>
+                </h3>
+                <button
+                  onClick={addRobot}
+                  className="absolute right-0 top-0 shadow bg-orange-500 hover:bg-orange-600 focus:shadow-outline focus:outline-none text-sm text-white py-2 px-4 rounded"
+                  type="button"
+                >
+                  Add robot
+                </button>
+              </div>
+              <ol className="list-decimal">
+                {robots.map((r) => (
+                  <li
+                    key={r.id}>
+                    <RobotFormFields
+                      key={r.id}
+                      gridLength={gridLength}
+                      robot={r}
+                      onRemove={() => removeRobot(r)}
+                      onChangeRobots={changeRobot}
+                    />
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+          <div className="py-10 w-full flex items-center justify-center">
             <button
-              onClick={addRobot}
-              className="absolute right-0 top-0 shadow bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-sm text-white py-2 px-3 rounded"
+              className="shadow bg-orange-600 hover:bg-orange-700 focus:shadow-outline focus:outline-none text-white font-medium py-3 px-8 rounded"
               type="button"
+              onClick={handleSubmit}
             >
-              Add robot
+              Start Simulation
             </button>
           </div>
-          <ol className="list-decimal">
-            {robots.map((r) => (
-              <li 
-              key={r.id}>
-                <RobotFormFields
-                  key={r.id}
-                  gridLength={gridLength}
-                  robot={r}
-                  onRemove={() => removeRobot(r)}
-                  onChangeRobots={changeRobot}
-                />
-              </li>
-            ))}
-          </ol>
         </div>
       </div>
-      <div className="absolute left-1/2 bottom-5 -translate-x-1/2">
-        <button
-          className="shadow bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-white font-medium py-2 px-4 rounded"
-          type="button"
-          onClick={handleSubmit}
-        >
-          Start Simulation
-        </button>
-      </div>
-    </div>
+    </>
   );
 }
+

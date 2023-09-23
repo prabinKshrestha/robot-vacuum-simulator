@@ -4,8 +4,8 @@ export default function Cell({ isCleaned, isRobot }) {
   return (
     <div
       className={
-        `h-5 w-5 border border-black text-center ` +
-        (isRobot ? "bg-purple-500" : isCleaned ? "" : "bg-orange-300")
+        `h-6 w-6 border border-black text-center ` +
+        (isRobot ? "bg-orange-100" : isCleaned ? "bg-white" : "bg-orange-300")
       }
     >
       {isRobot ? <Robot /> : ""}

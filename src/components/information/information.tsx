@@ -20,14 +20,15 @@ export default function Information({ onConfigurationClick }) {
             </div>
 
             <div className="my-10 text-base w-2/3 mx-auto">
+                <h3 className="pt-10 text-base font-medium text-justify">Grateful acknowledgment to Professor Reza Shahidi for granting permission to showcase this project.</h3>
                 <p className="pt-10 not-italic text-justify">
-                    The following is the problem statement (<span className="italic">Sahidi, R. (2023). Advance Concurrent Programming [Course assignment]. Memorial University of Newfoundland.</span>).
+                    The following is the problem statement (<span className="italic">Shahidi, R. (2023). Advance Concurrent Programming [Course assignment]. Memorial University of Newfoundland.</span>).
                     The instructions is to use configuration files for robots related configs, but instead, I employed form inputs to customize the settings for our vacuum robot simulation.
                     As mentioned earlier, this approach allows us to not only visualize the movements of our robots but also observe any collisions that may occur.
                 </p>
             </div>
 
-            <div className="mt-16 text-sm p-10 w-2/3 mx-auto  text-justify italic rounded shadow overflow-hidden bg-white ">
+            <div className="mt-16 text-sm p-10 w-2/4 mx-auto  text-justify italic rounded shadow overflow-hidden bg-white ">
                 <p className="text-center text-lg not-italic">
                     <span className="border-orange-500 border-b-2 px-2 font-bold">Problem</span>
                 </p>
@@ -72,13 +73,13 @@ export default function Information({ onConfigurationClick }) {
                     should be output to standard output *ROOM CLEAN*, after which the simulation should end.
                 </p>
             </div>
-            <div className="text-center py-10">
+            <div className="text-center mt-10 py-10">
                 <button
-                    className="shadow bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-white font-medium py-2 px-4 rounded"
+                    className="shadow-xl bg-orange-600 hover:bg-orange-700 focus:shadow-outline focus:outline-none text-white font-medium py-3 px-8 rounded"
                     type="button"
                     onClick={onConfigurationClick}
                 >
-                    Configure
+                    Start Configuration
                 </button>
             </div>
         </div>

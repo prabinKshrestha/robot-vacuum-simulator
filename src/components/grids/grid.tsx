@@ -2,10 +2,7 @@
 
 import React, { useState } from "react";
 import {
-    DirectionEnum,
     LocationModel,
-    RobotViewModel,
-    SpiralDirectionEnum,
 } from "@/lib/models";
 import cloneDeep from "lodash/cloneDeep";
 import Cell from "./cell";
@@ -20,7 +17,9 @@ export default function Grid({ gridLength, time, formRobots, onRestart }) {
     });
 
     const [robots, setRobots] = useState(robotsCloned);
+    const [showCollision, setshowCollision] = useState(false);
     const [visitedLocations, setvisitedLocations] = useState([]);
+
     const classGrid = `grid-cols-${gridLength}`;
 
     function _changeLocation() {
@@ -46,6 +45,8 @@ export default function Grid({ gridLength, time, formRobots, onRestart }) {
     setTimeout(() => {
         if (!stopMovingRobots) {
             _changeLocation();
+        } else {
+            setshowCollision(true);
         }
     }, time * 1000);
 
@@ -66,7 +67,7 @@ export default function Grid({ gridLength, time, formRobots, onRestart }) {
     }
 
     return (
-        <div className="w-full h-screen py-20 px-10 flex justify-items-center items-center relative">
+        <div className="w-full min-h-screen py-20 px-10 flex flex-col justify-center items-center relative">
             <div
                 className={`mx-auto inline-grid border border-black grid-flow-row gap-0 ${classGrid}`}
             >
@@ -82,11 +83,21 @@ export default function Grid({ gridLength, time, formRobots, onRestart }) {
                         ))
                     )}
             </div>
-            <div className="absolute left-1/2 bottom-10 -translate-x-1/2">
+            {
+                showCollision ? <div className="mt-16">
+                    <button
+                        className="shadow-xl bg-red-600 focus:shadow-outline focus:outline-none text-white font-medium py-3 px-8 rounded"
+                        type="button"
+                    >
+                        ****** Collided ******
+                    </button>
+                </div> : ""
+            }
+            <div className="mt-20">
                 <button
-                    className="shadow bg-purple-600 hover:bg-purple-700 focus:shadow-outline focus:outline-none text-white font-medium py-2 px-4 rounded"
+                    className="shadow-xl bg-orange-600 hover:bg-orange-700 focus:shadow-outline focus:outline-none text-white font-medium py-3 px-8 rounded"
                     type="button"
-                    onClick={onRestart}
+                    onClick={() => { stopMovingRobots = false; onRestart(); }}
                 >
                     Change Configuration
                 </button>

@@ -6,27 +6,21 @@ import Information from "@/components/information/information";
 import WelcomeBanner from "@/components/welcome-banners/welcome-banner";
 import { LocationModel, RobotViewModel, SpiralDirectionEnum } from "@/lib/models";
 import { useRef, useState } from "react";
+import cloneDeep from "lodash/cloneDeep";
 
 export default function Home() {
 
-  const gridRef = useRef(null); //reference grid section
   const formRef = useRef(null); //reference form section
-  const infoRef = useRef(null); //reference information section
+  const gridRef = useRef(null); //reference grid section
 
   const [formRenderCount, setFormRenderCount] = useState(0);
   const [simulationRenderCount, setSimulationRenderCount] = useState(0);
-  const [gridLength, setGridLength] = useState(0);
-  const [time, setTime] = useState(0);
-  const [robots, setRobots] = useState([]);
+
+  const [gridLength, setGridLength] = useState(0); // state to set N for NxN grid
+  const [time, setTime] = useState(0); // state to set time for robot
+  const [robots, setRobots] = useState([]); // state to set Robots on Grid
 
   //#region Functions
-
-  function welcomeStartClick() {
-    setTimeout(() => {
-      //when welcome start button clicked, slide it to the information section
-      infoRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  }
 
   function configurationClick() {
     setFormRenderCount(formRenderCount + 1);
@@ -52,12 +46,12 @@ export default function Home() {
   ) {
     formRobots.forEach(x => {
       //assigning properties to the robot model for the configuration
-      x.setGridSize(gridLength); 
+      x.setGridSize(gridLength);
       x.setSpiralDirection(clockwise ? SpiralDirectionEnum.Clockwise : SpiralDirectionEnum.AnitClockwise);
     });
     setGridLength(gridLength);
     setTime(time);
-    setRobots(formRobots);
+    setRobots(cloneDeep(formRobots));
 
     setSimulationRenderCount(simulationRenderCount + 1); //to re-render the simulator component
 
@@ -70,10 +64,8 @@ export default function Home() {
 
   return (
     <>
-      <WelcomeBanner onStartClick={welcomeStartClick} />
-      <div ref={infoRef}>
-        <Information onConfigurationClick={configurationClick} />
-      </div>
+      <WelcomeBanner />
+      <Information onConfigurationClick={configurationClick} />
       {
         formRenderCount > 0 ?
           <div ref={formRef} >
