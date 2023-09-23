@@ -4,7 +4,7 @@
 
 Welcome to our **Robot Vacuum Simulator**, a playful and educational project that lets you explore the world of robot vacuum cleaners in a virtual setting. This project is made using React and Next.js, which means it's easy to use and customize.
 
-Here's the deal: in this simulation, you get to watch how a robot vacuum moves around and cleans a space. Think of the space as a big grid, and each robot vacuum takes care of one grid square at a time. I've made sure these little robots won't bump into each other, so they won't be in the same square at the same time.
+Here's the deal: in this simulation, you get to watch how a robot vacuum moves around and cleans a space. Think of the space as a big grid, and each robot vacuum takes care of one grid square at a time. We should be sure these little robots won't bump into each other, so they won't be in the same square at the same time.
 
 Want to try it out yourself? You can change things like the number of robots, the size of the grid, how long it takes to clean a square, and where the robots start. It's like a fun playground for you to experiment with. Give our Robot Vacuum Simulator a spin and see what happens!
 
