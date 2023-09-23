@@ -4,13 +4,13 @@
 
 Welcome to our **Robot Vacuum Simulator**, a playful and educational project that lets you explore the world of robot vacuum cleaners in a virtual setting. This project is made using React and Next.js, which means it's easy to use and customize.
 
-Here's the deal: in this simulation, you get to watch how a robot vacuum moves around and cleans a space. Think of the space as a big grid, and each robot vacuum takes care of one grid square at a time. We've made sure these little robots won't bump into each other, so they won't be in the same square at the same time.
+Here's the deal: in this simulation, you get to watch how a robot vacuum moves around and cleans a space. Think of the space as a big grid, and each robot vacuum takes care of one grid square at a time. I've made sure these little robots won't bump into each other, so they won't be in the same square at the same time.
 
 Want to try it out yourself? You can change things like the number of robots, the size of the grid, how long it takes to clean a square, and where the robots start. It's like a fun playground for you to experiment with. Give our Robot Vacuum Simulator a spin and see what happens!
 
 ### Why this project?
 
-During my studies in Master of Applied Science in Software Engineering at Memorial University of Newfoundland, I encountered an assignment question by Professor Reza Sahidi related to my MASC course. Although this solution is not an exact match, it shares similarities with the question. Instead of providing a solution on standard console, I saw an opportunity to make it more engaging by creating a visual solution.
+During my studies in Master of Applied Science in Software Engineering at Memorial University of Newfoundland, I encountered an assignment question by Professor Reza Shahidi related to my MASC course. Although this solution is not an exact match, it shares similarities with the question. Instead of providing a solution on standard console, I saw an opportunity to make it more engaging by creating a visual solution.
 
 This was also the perfect opportunity for me to dive into the world of React, a technology I had been eager to learn. I decided to write a code solution, implement it on a web platform, and, in the process, acquire valuable React skills. This experience not only helped me address the assignment effectively but also allowed me to expand my knowledge in a practical and hands-on way.
 
@@ -56,13 +56,7 @@ This will start the development server, and you can access the Robot Vacuum Simu
 
 ## Project Details
 
-The following is the problem statement (Shahidi, R. (2023). Advance Concurrent Programming [Course assignment]. Memorial University of Newfoundland.). The instructions is to use configuration files for robots related configs, but instead, I employed form inputs to customize the settings for our vacuum robot simulation. As mentioned earlier, this approach allows us to not only visualize the movements of our robots but also observe any collisions that may occur.
-
-The problem statement involves simulating a group of robot vacuums cleaning a square room. Each robot can clean a 0.5m x 0.5m section of the room every 2 seconds. The room's dimensions are specified in a text file called room.txt. There's also a robots.txt file containing information about the number of robot vacuums, their initial positions, and directions.
-
-The robots move in a counter-clockwise spiral pattern, with one robot starting at the center cell. The simulation proceeds in 2-second iterations, and if two robots occupy the same cell, it results in a collision, causing the program to terminate. If a robot approaches a wall, it turns counterclockwise along the wall.
-
-The goal is to clean the entire room without collisions. If all cells are clean before a collision occurs, the program outputs "ROOM CLEAN," and the simulation ends.
+The problem statement (_Shahidi, R. (2023). Advance Concurrent Programming [Course assignment]. Memorial University of Newfoundland._) can be seen here [Website](http://robot-simulator.prabinkumarshrestha.com/). The instructions is to use configuration files for robots related configs, but instead, I employed form inputs to customize the settings for our vacuum robot simulation. As mentioned earlier, this approach allows us to not only visualize the movements of our robots but also observe any collisions that may occur.
 
 ### Technologies Used
 
